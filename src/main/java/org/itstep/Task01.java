@@ -13,12 +13,20 @@ public class Task01 {
         List<String> stringLists = new List<>(10);
         // Добавление с перебором
         for (int i = 0; i < stringLists.getSize() + 2; i++) {
-            stringLists.add("A" + i);
+            try {
+                stringLists.add("A" + i);
+            } catch(FullListException ex) { // тут потрібно перехоплювати ексепшен
+                ex.printStackTrace();
+            }
         }
         stringLists.printArray();
         // Удаление с перебором
         for (int i = 0; i < stringLists.getSize() + 2; i++) {
-            stringLists.removeLast();
+            try {
+                stringLists.removeLast();
+            } catch(EmptyListException ex) { // тут потрібно перехоплювати ексепшен
+                ex.printStackTrace();
+            }
         }
         stringLists.printArray();
         System.out.println("End program");
