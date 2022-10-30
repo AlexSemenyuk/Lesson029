@@ -25,32 +25,26 @@ class List<T> {
         this.size = size;
     }
 
-    public void add(T item) {
+    public void add(T item) throws FullListException { // тут потрібно декларувати перевіряємий ексепшен
         if (cur < size) {
 //            obj[cur++] = item;
             cur++;
             obj[cur - 1] = item;
 
         } else if (cur == size) {
-            try {
-                throw new FullListException();
-            } catch (FullListException e) {
-                System.err.println("Array is full");
-            }
+            // тут потрібно викинути ексепшен
+            throw new FullListException();
         }
     }
 
-    public void removeLast() {
+    public void removeLast() throws EmptyListException {
         if (cur >= 1) {
             cur--;
             obj[cur] = null;
 //        obj[--cur] = null;
         } else {
-            try {
-                throw new EmptyListException();
-            } catch (EmptyListException e) {
-                System.err.println("No items");
-            }
+            // тут потрібно викинути ексепшен
+            throw new EmptyListException();            
         }
     }
 
